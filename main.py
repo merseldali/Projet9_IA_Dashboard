@@ -1,5 +1,8 @@
+from json.decoder import JSONArray
+
 import streamlit as st
 import requests
+import json
 
 
 def request_recommendations(azure_uri, id_user):
@@ -11,8 +14,14 @@ def request_recommendations(azure_uri, id_user):
 
     if response.status_code != 200:
         return "Request failed with status {}, {}".format(response.status_code, response.text)
-
-    return response.json()
+    else:
+        json_resp = response.json()
+        formatted_resp = []
+        i = 0
+        for recommendation in json_resp:
+            i += 1
+            formatted_resp.append({'Article ' + str(i): recommendation})
+        return formatted_resp.json()
 
 
 def main():
