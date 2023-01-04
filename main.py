@@ -7,7 +7,7 @@ def request_recommendations(azure_uri, id_user):
     payload = {'code': '_fpxEYA8azXiJ-w6byYzDF4tvL8hqIsEKVEeW-iPwTLIAzFurQXbyQ=='}
 
     response = requests.request(
-        method='GET', url=azure_uri+str(id_user), params=payload)
+        method='GET', url=azure_uri+id_user, params=payload)
 
     if response.status_code != 200:
         raise Exception(
@@ -21,7 +21,7 @@ def main():
 
     st.title('Article recommendations')
 
-    id_user = st.number_input('id_user')
+    id_user = st.text_input('id_user')
 
     recommend_btn = st.button('Get recommendations')
     if recommend_btn:
