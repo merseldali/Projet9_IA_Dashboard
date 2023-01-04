@@ -21,7 +21,7 @@ def request_recommendations(azure_uri, id_user):
         for recommendation in json_resp:
             i += 1
             formatted_resp.append({'Article ' + str(i): recommendation})
-        return formatted_resp.json()
+        return formatted_resp
 
 
 def main():
