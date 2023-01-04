@@ -10,8 +10,7 @@ def request_recommendations(azure_uri, id_user):
         method='GET', url=azure_uri+id_user, params=payload)
 
     if response.status_code != 200:
-        raise Exception(
-            "Request failed with status {}, {}".format(response.status_code, response.text))
+        return "Request failed with status {}, {}".format(response.status_code, response.text)
 
     return response.json()
 
