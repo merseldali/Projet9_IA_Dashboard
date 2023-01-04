@@ -1,8 +1,5 @@
-from json.decoder import JSONArray
-
 import streamlit as st
 import requests
-import json
 
 
 def request_recommendations(azure_uri, id_user):
